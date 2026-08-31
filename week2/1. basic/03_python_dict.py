@@ -31,6 +31,8 @@
 - 리스트 컴프리헨션을 사용하면 간결하게 작성할 수 있습니다
 """
 
+
+
 def find_above_average_students(students):
     """
     평균 점수 이상인 학생들을 찾는 함수
@@ -41,16 +43,24 @@ def find_above_average_students(students):
     Returns:
         tuple: (평균 점수, 평균 이상 학생 이름 리스트)
     """
-    # TODO: 모든 학생의 점수를 리스트로 추출하세요
-    pass
-    
-    # TODO: 평균 점수를 계산하세요
-    pass
-    
-    # TODO: 평균 이상인 학생들의 이름을 리스트로 추출하세요
-    pass
-    
+    student=len(students) #학생 수
+     # TODO: 모든 학생의 점수를 리스트로 추출하세요
+    scores = []
+
+    for i in students: #딕셔너리를 하나씩 꺼내서 그안에 있는 스코어 점수를 더한다
+        a = i['score']
+        scores.append(a) #하나씩 꺼내서 뒤에 추가해서 붙임
+    total = sum(scores)
+    average = total/student #평균구하기 
+
+    above_average_students=[]
+
+    for student in students: #딕셔너리 가져옴
+        if average <= student['score']: #딕셔너리 가져온것중에 스코어 점수를 평균점수랑 비교해서 이상일 경우name을 출력
+            above_average_students.append(student['name'])
+
     return average, above_average_students
+
 
 # 테스트 케이스
 if __name__ == "__main__":
@@ -77,5 +87,4 @@ if __name__ == "__main__":
     avg, students = find_above_average_students(students2)
     print(f"평균 점수: {avg}")
     print(f"평균 이상 학생: {students}")
-
 
