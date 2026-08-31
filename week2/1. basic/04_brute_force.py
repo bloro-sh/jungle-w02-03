@@ -16,6 +16,7 @@
 예제:
 입력: nums = [2, 7, 11, 15, 3], target = 9
 출력: [(0, 1), (0, 4)]
+
 설명: nums[0] + nums[1] = 2 + 7 = 9
       nums[0] + nums[4] = 2 + 7 = 9 (중복이지만 인덱스가 다름)
 
@@ -26,7 +27,10 @@
 - i < j 조건을 유지하여 중복을 방지하세요
 """
 
+# nums에 있는 값들을 한 쌍으로 해서 값끼리 더하고, target과 값이 맞으면 그 리스트를 출력해라. 라는 의미인것같음
+
 def find_two_sum_pairs(nums, target):
+
     """
     배열에서 합이 target이 되는 모든 인덱스 쌍 찾기
     
@@ -41,12 +45,24 @@ def find_two_sum_pairs(nums, target):
     n = len(nums)
     
     # TODO: 이중 반복문으로 모든 쌍을 확인하세요
+    add = 0
+    for i in range(n-1): # 첫번째 인덱스 i를 먼저 잡기 원소개수로 i가 인덱스여야된다
+        for j in range(i+1,n):#겹치지않게 j부분을 만든다 (i와 j 인덱스개수를 만듬)
+            add = nums[i]+nums[j]#i와j에 넣은 값들을 add에 넣음
+
+            if add == target:
+                pairs.append((i,j))#add와 taget이 같으면 한쌍을 만든다
+
+
+
     ## 외부 반복문: i는 0부터 n-1까지
     ## 내부 반복문: j는 i+1부터 n까지 (중복 방지)
     ## nums[i] + nums[j]가 target과 같으면 (i, j)를 결과에 추가
-    pass  
+    
+    pass
     
     return pairs
+
 
 # 테스트 케이스
 if __name__ == "__main__":
