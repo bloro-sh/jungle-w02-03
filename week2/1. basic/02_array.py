@@ -50,7 +50,7 @@ def rotate_matrix_90(matrix):
     # 힌트: (i, j) 위치의 요소는 회전 후 (j, n-1-i) 위치로 이동
     pass
     
-    return rotated
+    return 
 
 def print_matrix(matrix):
     """배열을 보기 좋게 출력하는 헬퍼 함수"""
