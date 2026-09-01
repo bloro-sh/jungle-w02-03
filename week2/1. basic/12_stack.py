@@ -25,6 +25,9 @@
 - 마지막에 스택이 비어있으면 True
 """
 
+#개념: 스택은 임시저장하는 자료구조로 스택에 데이터를 넣는것을 푸시,꺼내는것을 팝이라고한다
+#LIFO: 후입선출 나중에 넣은값을 먼저 꺼낸다
+
 def is_valid_parentheses(s):
     """
     괄호 짝이 맞는지 확인
@@ -35,15 +38,27 @@ def is_valid_parentheses(s):
     Returns:
         올바른 괄호면 True, 아니면 False
     """
-    stack = []
-    
+    stack = [] #1. 빈 리스트 만들기
+
+    for char in s:#글자를 꺼내서 순회
+        if char == "(":#문자열 비교
+            stack.append(char)#스택에 문자열 추가
+        elif char == ")":#닫는 괄호가 있을때
+            if len(stack) == 0:#stack이 없을때
+                return False
+            else:
+                stack.pop()#있을때 스택에서 꺼냄
+
     # TODO: 문자열의 각 문자를 순회
     ## : 여는 괄호 '('면 스택에 추가
     ## : 닫는 괄호 ')'면
     ## 스택이 비어있으면 False 반환
     ## 아니면 스택에서 pop
     pass
-    
+    if (len(stack))==0:
+        return True #스택이 비어있어야 True
+    else:
+        return False
     # TODO: 반복이 끝나면 스택이 비어있는지 확인
     pass
 
