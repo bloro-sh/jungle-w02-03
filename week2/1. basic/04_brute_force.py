@@ -47,7 +47,7 @@ def find_two_sum_pairs(nums, target):
     # TODO: 이중 반복문으로 모든 쌍을 확인하세요
     add = 0
     for i in range(n-1): # 첫번째 인덱스 i를 먼저 잡기 원소개수로 i가 인덱스여야된다
-        for j in range(i+1,n):#겹치지않게 j부분을 만든다 (i와 j 인덱스개수를 만듬)
+        for j in range(i+1,n):#겹치지않게 j부분을 만든다 (i와 j 인덱스개수를 만듬) 이때 (시작은 +1로,끝은 원소개수 전까지 반복)
             add = nums[i]+nums[j]#i와j에 넣은 값들을 add에 넣음
 
             if add == target:
