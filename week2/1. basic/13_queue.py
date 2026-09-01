@@ -40,6 +40,11 @@ def process_print_queue(jobs):
     queue = deque(jobs)
     
     processed = []
+
+    while len(queue)>0:#비어있지않은 동안에 반복
+        job = queue.popleft()#먼저들어온 값 꺼낸걸 job에 담고
+        print(f"처리: {job}")#꺼낸 순서대로 출력
+        processed.append(job)#리스트에 추가
     
     # TODO: 큐가 비어있지 않은 동안 반복
     ## 큐에서 작업 꺼내기
