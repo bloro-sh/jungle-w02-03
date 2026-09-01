@@ -34,6 +34,11 @@ def find_duplicates_brute_force(nums):
     # TODO: 이중 반복문으로 중복 찾기
     ## i번째 원소와 i+1 이후의 모든 원소를 비교
     ## 같은 원소를 찾으면 duplicates에 추가 (중복 추가 방지 필요)
+    for i in range(n-1):#첫번째반복문은 리스트 끝까지
+        for j in range(i+1,n):#두번째j는 항상 i다음위치 시작으로 마지막확인까지
+            if nums[i] == nums[j] and nums[i] not in duplicates:#i와 j가 같을때 그리고 i가 duplicates에 같은숫자로 들어가있지않을때 
+                duplicates.append(nums[i]) #만약i와j가 같을시 duplicates는 빈리스트이기에 들어가고 다음 숫자들을 또 비교할때 두값이같아 duplicates에 들어가있으면
+                #false로 리스트에 추가하지않고 넘어간다
     pass
     
     return duplicates
@@ -46,7 +51,9 @@ def find_duplicates_sorting(nums):
     """
     if not nums:
         return []
-    
+
+    n = len(nums)
+    nums.sort()#4, 3, 2, 7, 8, 2, 3, 1 -> 1, 2, 2, 3, 3, 4, 7, 8 sort를 쓰는이유는 모든원소 짝을 비교와 정렬하는데에 시간과 메모리연산에 큰차지를 한다.
     # TODO: 배열을 정렬하세요 (nums.sort() 사용)
     pass
     
@@ -54,7 +61,10 @@ def find_duplicates_sorting(nums):
     
     # TODO: 인접한 원소를 비교하여 중복 찾기
     # i와 i+1 원소가 같고, duplicates에 없으면 추가
-    pass
+    for i in range(n-1):
+        if nums[i]==nums[i+1] and nums[i] not in duplicates:
+            duplicates.append(nums[i])
+        pass
     
     return duplicates
 
@@ -66,7 +76,14 @@ def find_duplicates_hash(nums):
     """
     seen = set()
     duplicates = set()
-    
+
+    for i in range(len(nums)):#원소개수를 i에 하나씩 넣기
+        if nums[i] in seen:#하나씩 넣은 수가 seen에 값이 들어있는지 확인
+            duplicates.add(nums[i])#있으면 duplicates에 추가 set은 add로 추가
+        else:
+            seen.add(nums[i])#없으면 seen에 추가한다
+
+#두개를 저장하므로 다른 방법보다 해시집합이 메모리 공간을 더 많이쓰는것 같다. (메모리여유가 부족할때는 정렬탐색을 쓰고,메모리가 많고 속도를 제일 빠르게 필요할때는 해시집합)
     # TODO: 각 원소를 순회하면서
     ## 이미 seen에 있으면 duplicates에 추가
     ## 없으면 seen에 추가
