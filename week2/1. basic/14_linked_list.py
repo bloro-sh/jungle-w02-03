@@ -100,8 +100,8 @@ class Node:
         └──────┴──────┘
     """
     def __init__(self, data):
-        self.data = data
-        self.next = None
+        self.data = data 
+        self.next = None #다음 누구를 가리키는지 화살표 (head는 가장 첫번째 노드가 누구인지 가르킴)
 
 
 class LinkedList:
@@ -127,7 +127,7 @@ class LinkedList:
                                        ──append(7)──▶
               head ─▶ [1|●]─▶[2|●]─▶[7|None]
         """
-        new_node = Node(data)
+        new_node = Node(data)#새로운 노드 생성
 
         # ─── Level 1: 리스트가 비어 있는 경우 ────────────────────────
         # 힌트: self.head 가 None 이면, head 에 new_node 를 바로 꽂고 return.
@@ -135,7 +135,10 @@ class LinkedList:
         #   if self.head is None:
         #       self.head = new_node
         #       return
-        pass
+
+        if self. head is None:#노드가 비어있을때
+            self.head = new_node #첫번째 노드를 다음 노드에 꽂음
+            return
 
         # ─── Level 2: 마지막 노드 찾기 ──────────────────────────────
         # head 부터 시작해서 next 가 None 이 될 때까지 따라갑니다.
@@ -144,11 +147,16 @@ class LinkedList:
         # TODO: while 문으로 current 를 마지막 노드까지 이동시키세요.
         #   while current.next is not None:
         #       current = current.next
+
+        while current.next is not None:#마지막 노드를 찾을때까지 이동 
+            current = current.next #있으면 그 다음칸으로 이동
         pass
 
         # ─── Level 3: 마지막 노드의 next 에 새 노드를 붙이기 ─────────
         # 위 반복문이 끝나면 current 가 곧 마지막 노드입니다.
         # TODO: current.next = new_node
+
+        current.next = new_node # 이전노드를 새노드에 붙인다
         pass
 
     def print_list(self):
@@ -162,6 +170,8 @@ class LinkedList:
         # ─── Level 1: 시작 위치 ─────────────────────────────────────
         # current 라는 "이동용 변수" 를 head 에서 시작시킵니다.
         # TODO: current = self.head
+
+        current = self.head #가장 첫번재 노드 head가 current로 시작된다
         pass
 
         # ─── Level 2: 끝까지 순회 ──────────────────────────────────
@@ -171,6 +181,10 @@ class LinkedList:
         #   while current is not None:
         #       values.append(current.data)
         #       current = current.next
+
+        while current is not None:#current가 비어있지않을때 반복
+            values.append(current.data)#values에 current노드값을 추가한다
+            current = current.next #current화살표 다음을 current에 연결(현재위치를 다음칸에 옮기기)
         pass
 
         return values
