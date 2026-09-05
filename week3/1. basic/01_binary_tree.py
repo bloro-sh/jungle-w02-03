@@ -32,6 +32,7 @@
 - 순회 순서만 다름
 """
 
+
 class TreeNode:
     """이진 트리 노드"""
     def __init__(self, value):
@@ -39,59 +40,85 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 def preorder(root):
     """전위 순회: 루트 → 왼쪽 → 오른쪽"""
     result = []
-    
+
+    if root is None:
+        return []
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+
+    result = [root.value]
     # TODO: 루트 값 추가
     pass
-    
+
+    preorder(root.left) # 현재 노드의 왼쪽 노드를 가지고 같은 preorder 함수를 다시 실행하는거기때문에 간단하게 하나하나 지정하지않고 트리를 따라갈수있다
+    result= result + preorder(root.left) #빈리스트에 1 노드와 현재 왼쪽트리 값 합치기 [1,2,4,5]
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+
+    preorder(root.right)
+    result= result + preorder(root.right)
     # TODO: 오른쪽 서브트리 순회
     pass
     
     return result
+
+
+
 
 def inorder(root):
     """중위 순회: 왼쪽 → 루트 → 오른쪽"""
     result = []
-    
+
+
+    if root is None:
+        return []
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+
+    result = result + inorder(root.left)
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+
+    result.append(root.value)
     # TODO: 루트 값 추가
     pass
-    
+
+    inorder(root.right)
+    result = result + inorder(root.right)
     # TODO: 오른쪽 서브트리 순회
     pass
     
     return result
 
+
+
 def postorder(root):
     """후위 순회: 왼쪽 → 오른쪽 → 루트"""
     result = []
-    
+
+    if root is None:
+        return []
     # TODO: root가 None이면 빈 리스트 반환
     pass
-    
+
+    result = result + postorder(root.left)
     # TODO: 왼쪽 서브트리 순회
     pass
-    
+
+    result = result + postorder(root.right)
     # TODO: 오른쪽 서브트리 순회
     pass
-    
+
+    result.append(root.value)
     # TODO: 루트 값 추가
     pass
     
     return result
+
 
 # 테스트 케이스
 if __name__ == "__main__":
@@ -111,4 +138,5 @@ if __name__ == "__main__":
     print(f"전위 순회: {preorder(root)}")
     print(f"중위 순회: {inorder(root)}")
     print(f"후위 순회: {postorder(root)}")
+
 
