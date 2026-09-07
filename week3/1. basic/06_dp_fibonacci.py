@@ -81,14 +81,27 @@ def fibonacci_memo(n, memo=None):
     Returns:
         n번째 피보나치 수
     """
+
+    if memo is None:
+        memo = {}
     # TODO: memo가 None이면 빈 딕셔너리로 초기화
     pass
-    
+
+    if n <=1:#1이면 n반환
+        return n
     # TODO: base case 
     pass
-    
+
+
+    if n in memo:#memo에 n이 있을때 memo n에 반환
+        return memo[n]
+
     # TODO: 이미 계산한 값이 memo에 있으면 반환
     pass
+
+
+    result = fibonacci_memo(n-1,memo)+fibonacci_memo(n-2,memo)
+    memo[n] = result #계산한적 없을때 메모에 계산하고 저장
     
     # TODO: 재귀 호출하여 계산하고 memo에 저장
     pass
