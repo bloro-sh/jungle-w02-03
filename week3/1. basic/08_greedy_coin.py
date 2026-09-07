@@ -41,8 +41,15 @@ def make_change_greedy(change, coins):
         (총 개수, {동전: 개수} 딕셔너리)
     """
     result = {}
-    total_coins = 0
-    
+    total_coins = 0 #각 동전에서 사용한 개수 총 저장
+
+    for coin in coins: #500,100,50,10 원씩 꺼내기
+        count = change // coin #1260원 몫구하기 500일경우 = 2
+        total_coins += count#2개를 total_coins에 저장
+        change = change % coin # 남은계산으로 1260에서 500원 나눈 나머지 260원일때 change에 넣기
+        #다음 동전으로 넘어감
+        if count > 0:# 사용한동전 개수가 0보다 크면 result에 동전종류랑 개수를 저장
+            result[coin] = count 
     # TODO: 각 동전에 대해 반복
     ## 현재 동전으로 거슬러줄 수 있는 개수 계산    
     ## 개수가 0보다 크면 결과에 추가
